@@ -8,7 +8,11 @@ const ChoiceCard = (props) => {
   return (
     <div
       className={`choice-card ${
-        props.winner ? "border-success" : "border-danger"
+        props.winner === "win"
+          ? "border-success"
+          : props.winner === "loss"
+          ? "border-danger"
+          : "border-dark"
       }`}
     >
       <h2 className="text-center">{props.title}</h2>
@@ -22,6 +26,7 @@ const ChoiceCard = (props) => {
         }
         alt={props.shape}
       />
+      <h2 className="text-center">{props.winner}</h2>
     </div>
   );
 };
