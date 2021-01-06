@@ -27,6 +27,7 @@ const ChoiceCard = (props) => {
         alt={props.shape}
       />
       <h2 className="text-center">{props.winner}</h2>
+      <h2 className="text-center">{props.score}</h2>
     </div>
   );
 };
