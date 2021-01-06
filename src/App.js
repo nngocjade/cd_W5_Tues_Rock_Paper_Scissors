@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import PublicNavbar from "./components/PublicNavbar";
 import ChoiceCard from "./components/ChoiceCard";
+import UserInput from "./components/UserInput";
 import { ButtonGroup, Button, CardDeck, Container } from "react-bootstrap";
 import React, { useState } from "react";
 
@@ -16,6 +17,7 @@ function App() {
   const [computerChoice, setComputerChoice] = useState("");
   const [computerResult, setComputerResult] = useState("tie");
   const [computerScore, setComputerScore] = useState(0);
+  const [name, setName] = useState("You");
 
   //Create a function called randomMove() that will assign a value to computerChoice every time it runs. Log the result to the console so we can know if it works. Call it so it will run when the page loads.
   const randomMove = (move) => {
@@ -58,14 +60,24 @@ function App() {
     setComputerScore(0);
   };
 
+  const handleChange = (input) => {
+    if (input) {
+      setName(input);
+    } else {
+      setName("You");
+    }
+  };
+
   return (
     <div className="App">
       <PublicNavbar />
       <Container>
-        <h1>{prompt}</h1>
+        <div>
+          <input type="text" onChange={(e) => handleChange(e.target.value)} />
+        </div>
         <CardDeck>
           <ChoiceCard
-            title="You"
+            title={name}
             winner={playerResult}
             shape={playerChoice}
             score={playerScore}
