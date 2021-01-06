@@ -49,6 +49,15 @@ function App() {
     }
   };
 
+  const restart = () => {
+    setPlayerChoice("");
+    setPlayerResult("tie");
+    setPlayerScore(0);
+    setComputerChoice("");
+    setComputerResult("tie");
+    setComputerScore(0);
+  };
+
   return (
     <div className="App">
       <PublicNavbar />
@@ -91,8 +100,12 @@ function App() {
             Play ✌
           </Button>
         </ButtonGroup>
+        <Button onClick={restart}>restart</Button>
       </Container>
     </div>
   );
 }
 export default App;
+
+// RELOADS THE PAGE
+// onClick={() => window.location.reload()}
